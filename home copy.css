@@ -1,0 +1,66 @@
+/* General styles */
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  /* background-color: #ffffff; Changed to a lighter shade of black */
+}
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgb(255, 255, 255);
+  padding: 10px 10px;
+  transition: background-color 0.5s ease;
+}
+
+.navbar.scrolled {
+  background-color: #252323;
+  box-shadow: 0 4px 8px #ffffff; /* Changed to a lighter color */
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: #79d3d3;
+}
+
+.navbar-nav .nav-link {
+  color: #c88e2b;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #2d38d2;
+}
+
+/* Carousel */
+.carousel-item img {
+  width: 100%; /* Ensures it takes full width of the container */
+  height: 655px; /* Reduced height for a smaller carousel */
+  object-fit: cover; /* Prevents stretching */
+}
+.btn {
+  width: 140px;
+  height: 40px;
+  font-size: 18px;
+  background: #c88e2b;
+  border: none;
+  border-radius: 50px;
+  color: #ffffff;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.btn:hover {
+  background: #2d38d2;
+  color: #fff;
+}

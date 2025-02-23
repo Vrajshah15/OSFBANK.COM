@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | OSF BANK</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .contact-header {
+            background-color: #5174ca;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .contact-header h1 {
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .city-grid {
+            padding: 40px 0;
+        }
+
+        .city-card {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .city-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .city-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .city-card p {
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .headquarters {
+            background-color: #e9f5ff;
+            border-color: #86b7fe;
+        }
+
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            margin-top: 40px;
+        }
+
+        .footer a {
+            color: #86b7fe;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #ffffff;
+        }
+
+        .footer .social-icons a {
+            font-size: 24px;
+            margin: 0 10px;
+        }
+
+        /* Add this to your existing CSS */
+    .footer .social-icons img {
+        width: 30px; /* Adjust size as needed */
+        height: auto;
+        transition: transform 0.3s ease;
+        margin: 0 8px; /* Adjust spacing between icons */
+    }
+
+    .footer .social-icons img:hover {
+        transform: scale(1.1);
+    }
+    </style>
+</head>
+<body>
+
+    <!-- Contact Header -->
+    <div class="contact-header">
+        <h1>Contact Us</h1>
+        <p>We're here to help! Reach out to us anytime.</p>
+    </div>
+
+    <!-- City Grid -->
+    <div class="container city-grid">
+        <div class="row g-4">
+            <!-- Headquarters - Ahmedabad -->
+            <div class="col-md-6 col-lg-4">
+                <div class="city-card headquarters">
+                    <h3>Ahmedabad, India</h3>
+                    <p><strong>Headquarters</strong></p>
+                    <p>123 OSF Tower, Ashram Road</p>
+                    <p>Ahmedabad, Gujarat 380009</p>
+                    <p>Phone: +91 79 1234 5678</p>
+                    <p>Email: ahmedabad@osfbank.com</p>
+                </div>
+            </div>
+
+            <!-- New York -->
+            <div class="col-md-6 col-lg-4">
+                <div class="city-card">
+                    <h3>New York, USA</h3>
+                    <p>456 Wall Street, Suite 1200</p>
+                    <p>New York, NY 10005</p>
+                    <p>Phone: +1 212 123 4567</p>
+                    <p>Email: newyork@osfbank.com</p>
+                </div>
+            </div>
+
+            <!-- London -->
+            <div class="col-md-6 col-lg-4">
+                <div class="city-card">
+                    <h3>London, UK</h3>
+                    <p>789 Oxford Street, 3rd Floor</p>
+                    <p>London, W1D 2HG</p>
+                    <p>Phone: +44 20 1234 5678</p>
+                    <p>Email: london@osfbank.com</p>
+                </div>
+            </div>
+
+            <!-- Singapore -->
+            <div class="col-md-6 col-lg-4">
+                <div class="city-card">
+                    <h3>Singapore</h3>
+                    <p>101 Marina Bay Sands, Tower 2</p>
+                    <p>Singapore 018956</p>
+                    <p>Phone: +65 6789 1234</p>
+                    <p>Email: singapore@osfbank.com</p>
+                </div>
+            </div>
+
+            <!-- Sydney -->
+            <div class="col-md-6 col-lg-4">
+                <div class="city-card">
+                    <h3>Sydney, Australia</h3>
+                    <p>321 George Street, Level 15</p>
+                    <p>Sydney, NSW 2000</p>
+                    <p>Phone: +61 2 9876 5432</p>
+                    <p>Email: sydney@osfbank.com</p>
+                </div>
+            </div>
+
+            <!-- Dubai -->
+            <div class="col-md-6 col-lg-4">
+                <div class="city-card">
+                    <h3>Dubai, UAE</h3>
+                    <p>999 Sheikh Zayed Road, Office 2101</p>
+                    <p>Dubai, UAE</p>
+                    <p>Phone: +971 4 567 8901</p>
+                    <p>Email: dubai@osfbank.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>OSF Bank</h5>
+                    <p>Your trusted partner in banking.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Info</h5>
+                    <p>Email: <a href="mailto:info@osfbank.com">info@osfbank.com</a></p>
+                    <p>Phone: +91 79 1234 5678</p>
+                    <p>Fax: +91 79 1234 5679</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="#" target="_blank">
+                            <img src="Images/facebook-removebg-preview.png" alt="Facebook">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="Images/x-removebg-preview.png" alt="Twitter/X">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="Images/instagram-removebg-preview.png" alt="Instagram">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="Images/linkedin-removebg-preview.png" alt="LinkedIn">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2025 OSF Bank. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

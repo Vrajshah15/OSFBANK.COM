@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financial Calculators</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+      min-height: 100vh;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .calculator-container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #007bff;
+    }
+    .nav-tabs .nav-link {
+      border: none;
+      color: #555;
+      font-size: 18px;
+      margin-right: 10px;
+    }
+    .nav-tabs .nav-link.active {
+      background-color: #007bff;
+      color: #fff;
+      border-radius: 5px;
+    }
+    .calc-form label {
+      font-weight: bold;
+    }
+    .result-box {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .btn-primary {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator-container">
+    <h1>Financial Calculators</h1>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs justify-content-center" id="calcTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="personal-tab" data-toggle="tab" href="#personal" role="tab">Personal Loan</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab">Home Loan</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="fd-tab" data-toggle="tab" href="#fd" role="tab">FD Interest</a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content mt-4">
+      <!-- Personal Loan Calculator -->
+      <div class="tab-pane fade show active" id="personal" role="tabpanel" aria-labelledby="personal-tab">
+        <form id="personalLoanForm" class="calc-form">
+          <div class="form-group">
+            <label for="personalPrincipal">Loan Amount (Principal):</label>
+            <input type="number" class="form-control" id="personalPrincipal" placeholder="Enter loan amount" />
+          </div>
+          <div class="form-group">
+            <label>Fixed Annual Interest Rate: 12%</label>
+          </div>
+          <div class="form-group">
+            <label for="personalTenure">Tenure (Years):</label>
+            <input type="number" class="form-control" id="personalTenure" placeholder="Enter number of years" />
+          </div>
+          <button type="button" class="btn btn-primary" onclick="calculatePersonalLoan()">Calculate EMI</button>
+        </form>
+        <div class="result-box" id="personalResult"></div>
+      </div>
+
+      <!-- Home Loan Calculator -->
+      <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <form id="homeLoanForm" class="calc-form">
+          <div class="form-group">
+            <label for="homePrincipal">Loan Amount (Principal):</label>
+            <input type="number" class="form-control" id="homePrincipal" placeholder="Enter loan amount" />
+          </div>
+          <div class="form-group">
+            <label>Fixed Annual Interest Rate: 10%</label>
+          </div>
+          <div class="form-group">
+            <label for="homeTenure">Tenure (Years):</label>
+            <input type="number" class="form-control" id="homeTenure" placeholder="Enter number of years" />
+          </div>
+          <button type="button" class="btn btn-primary" onclick="calculateHomeLoan()">Calculate EMI</button>
+        </form>
+        <div class="result-box" id="homeResult"></div>
+      </div>
+
+      <!-- FD Interest Calculator -->
+      <div class="tab-pane fade" id="fd" role="tabpanel" aria-labelledby="fd-tab">
+        <form id="fdForm" class="calc-form">
+          <div class="form-group">
+            <label for="fdPrincipal">Deposit Amount (Principal):</label>
+            <input type="number" class="form-control" id="fdPrincipal" placeholder="Enter deposit amount" />
+          </div>
+          <div class="form-group">
+            <label>Fixed Annual Interest Rate: 8%</label>
+          </div>
+          <div class="form-group">
+            <label for="fdTime">Time (Years):</label>
+            <input type="number" class="form-control" id="fdTime" placeholder="Enter number of years" />
+          </div>
+          <div class="form-group">
+            <label for="fdCompound">Compounding Frequency:</label>
+            <select class="form-control" id="fdCompound">
+              <option value="1">Annually</option>
+              <option value="2">Semi-Annually</option>
+              <option value="4">Quarterly</option>
+              <option value="12">Monthly</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="calculateFD()">Calculate Maturity Amount</button>
+        </form>
+        <div class="result-box" id="fdResult"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    // EMI Calculation Function (used by both loan calculators)
+    function calculateEMI(principal, annualRate, years) {
+      var monthlyRate = annualRate / 12 / 100;
+      var months = years * 12;
+      var emi = (principal * monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
+      return emi;
+    }
+
+    // Personal Loan Calculator with fixed interest 12%
+    function calculatePersonalLoan() {
+      var principal = parseFloat(document.getElementById('personalPrincipal').value);
+      var years = parseFloat(document.getElementById('personalTenure').value);
+      var rate = 12; // Fixed interest rate for personal loan
+      if (isNaN(principal) || isNaN(years)) {
+        document.getElementById('personalResult').innerText = 'Please enter valid numbers.';
+        return;
+      }
+      var emi = calculateEMI(principal, rate, years);
+      document.getElementById('personalResult').innerText = 'Monthly EMI: ₹' + emi.toFixed(2);
+    }
+
+    // Home Loan Calculator with fixed interest 10%
+    function calculateHomeLoan() {
+      var principal = parseFloat(document.getElementById('homePrincipal').value);
+      var years = parseFloat(document.getElementById('homeTenure').value);
+      var rate = 10; // Fixed interest rate for home loan
+      if (isNaN(principal) || isNaN(years)) {
+        document.getElementById('homeResult').innerText = 'Please enter valid numbers.';
+        return;
+      }
+      var emi = calculateEMI(principal, rate, years);
+      document.getElementById('homeResult').innerText = 'Monthly EMI: ₹' + emi.toFixed(2);
+    }
+
+    // FD Interest Calculator (Compound Interest) with fixed interest 8%
+    function calculateFD() {
+      var principal = parseFloat(document.getElementById('fdPrincipal').value);
+      var time = parseFloat(document.getElementById('fdTime').value);
+      var n = parseInt(document.getElementById('fdCompound').value);
+      var rate = 8; // Fixed interest rate for FD
+      if (isNaN(principal) || isNaN(time)) {
+        document.getElementById('fdResult').innerText = 'Please enter valid numbers.';
+        return;
+      }
+      var r = rate / 100;
+      var maturity = principal * Math.pow(1 + r / n, n * time);
+      document.getElementById('fdResult').innerText = 'Maturity Amount: ₹' + maturity.toFixed(2);
+    }
+  </script>
+</body>
+</html>
